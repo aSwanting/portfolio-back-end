@@ -3,17 +3,16 @@
 @section('content')
     <div class="container">
         <div class="p-5">
-            <h1 class="mb-4 text-center">Edit Item</h1>
-            <form action="{{ route('admin.items.update', $item) }}" method="POST">
+            <h1 class="mb-4 text-center">New Category</h1>
+            <form action="{{ route('admin.categories.store') }}" method="POST">
                 @csrf
-                @method('PUT')
                 <div class="mb-4">
                     <label for="">Name</label>
-                    <input type="text" name="name" class="form-control" value="{{ old('name', $item->name) }}">
+                    <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                 </div>
                 <div class="mb-4">
                     <label for="">Description</label>
-                    <textarea name="description" class="form-control" id="" cols="30" rows="2">{{ old('description', $item->description) }}</textarea>
+                    <textarea name="description" class="form-control" id="" cols="30" rows="2">{{ old('description') }}</textarea>
                 </div>
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-secondary" value="Reset">

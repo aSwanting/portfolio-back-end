@@ -3,8 +3,8 @@
 @section('content')
     <div class="container py-5">
         <div class="page-header mb-4">
-            <h1 class="mb-3">List of Database Items</h1>
-            <a href="{{ route('admin.items.create') }}" class="btn btn-outline-primary">ADD ENTRY</a>
+            <h1 class="mb-3">List of Database Categories</h1>
+            <a href="{{ route('admin.categories.create') }}" class="btn btn-outline-primary">ADD ENTRY</a>
         </div>
         @if (session('danger'))
             <div class="alert alert-danger">
@@ -22,15 +22,16 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($items as $item)
+                @forelse ($categories as $category)
                     <tr>
-                        <td>{{ $item->id }}</td>
-                        <td><a href="{{ route('admin.items.show', $item) }}">{{ $item->name }}</a></td>
-                        <td>{{ $item->slug }}</td>
-                        <td><a class="btn btn-sm btn-outline-success" href="{{ route('admin.items.edit', $item) }}">edit</a>
+                        <td>{{ $category->id }}</td>
+                        <td><a href="{{ route('admin.categories.show', $category) }}">{{ $category->name }}</a></td>
+                        <td>{{ $category->slug }}</td>
+                        <td><a class="btn btn-sm btn-outline-success"
+                                href="{{ route('admin.categories.edit', $category) }}">edit</a>
                         </td>
                         <td>
-                            <form action="{{ route('admin.items.destroy', $item) }}" method="POST">
+                            <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-sm btn-outline-danger" type="submit" value="delete">
