@@ -18,6 +18,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.items.index') }}">Items</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.categories.index') }}">Categories</a>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.tags.index') }}">Tags</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="{{ url('profile') }}">Profile</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}"
