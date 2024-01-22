@@ -26,7 +26,8 @@ class StoreItemRequest extends FormRequest
             'name' => 'required|max:255|min:3',
             'slug' => 'alpha_dash',
             'description' => 'max:300',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'tags' => 'exists:tags,id'
         ];
     }
 

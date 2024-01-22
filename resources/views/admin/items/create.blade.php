@@ -20,6 +20,16 @@
                     </select>
                 </div>
                 <div class="mb-4">
+                    <p class="mb-0">Tags</p>
+                    @foreach ($tags as $tag)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                                id="tag-{{ $tag->id }}" @checked(in_array($tag->id, old('tags', [])))>
+                            <label class="form-check-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="mb-4">
                     <label for="">Description</label>
                     <textarea name="description" class="form-control" id="" cols="30" rows="2">{{ old('description') }}</textarea>
                 </div>

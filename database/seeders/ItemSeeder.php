@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 use App\Models\Category;
+use App\Models\Tag;
 
 class ItemSeeder extends Seeder
 {
@@ -23,6 +24,7 @@ class ItemSeeder extends Seeder
             $new_item->description = $faker->text(250);
             $new_item->category_id = Category::all()->random()->id;
             $new_item->save();
+            $new_item->tags()->attach(Tag::all()->random(mt_rand(0, Tag::count())));
         }
     }
 }

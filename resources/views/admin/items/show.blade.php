@@ -17,6 +17,11 @@
 
             <div class="card-body p-5">
                 <p><span class="fw-bold">Category: </span>{{ $item->category->name }}</p>
+                <ul class="list-group list-group-flush mb-3">
+                    @foreach ($item->tags as $tag)
+                        <li class="list-group-item">{{ $tag->name }}</li>
+                    @endforeach
+                </ul>
                 <p class="fs-5">{{ $item->description }}</p>
             </div>
 

@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Models\Category;
+use App\Models\Tag;
 
 class ItemController extends Controller
 {
@@ -25,7 +26,8 @@ class ItemController extends Controller
     public function create()
     {
         $categories = Category::orderBy('name')->get();
-        return view('admin.items.create', compact('categories'));
+        $tags = Tag::orderBy('name')->get();
+        return view('admin.items.create', compact('categories', 'tags'));
     }
 
     /**
@@ -36,6 +38,11 @@ class ItemController extends Controller
         $data = $request->validated();
         // dd($data);
         $new_item = Item::create($data);
+
+        if ($request->has('tags')) {
+            $new_item->tags()->attach($data['tags']);
+        }
+
         return redirect()->route('admin.items.show', $new_item);
     }
 
@@ -53,7 +60,8 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         $categories = Category::orderBy('name')->get();
-        return view('admin.items.edit', compact('item', 'categories'));
+        $tags = Tag::orderBy('name')->get();
+        return view('admin.items.edit', compact('item', 'categories', 'tags'));
     }
 
     /**
@@ -64,6 +72,12 @@ class ItemController extends Controller
         $data = $request->validated();
         // dd($data);
         $item->update($data);
+
+        if ($request->has('tags')) {
+            $item->tags()->sync($data['tags']);
+        } else {
+            $item->tags()->detach();
+        }
         return redirect()->route('admin.items.show', $item)->with('success', 'Updated successfully');
     }
 
@@ -72,6 +86,7 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
+        $item->tags()->detach();
         $item->delete();
         return redirect()->route('admin.items.index')->with('danger', $item->name . ' has been destroyed!');
     }
