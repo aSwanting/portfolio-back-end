@@ -25,7 +25,8 @@ class UpdateItemRequest extends FormRequest
         return [
             'name' => 'required|max:255|min:3',
             'slug' => 'alpha_dash',
-            'description' => 'max:300'
+            'description' => 'max:300',
+            'category_id' => 'required'
         ];
     }
 

@@ -12,6 +12,15 @@
                     <input type="text" name="name" class="form-control" value="{{ old('name', $item->name) }}">
                 </div>
                 <div class="mb-4">
+                    <label for="">Category</label>
+                    <select class="form-select" name="category_id" id="">
+                        <option value="">Category</option>
+                        @foreach ($categories as $category)
+                            <option @selected(old('category_id', $item->category->id) == $category->id) value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-4">
                     <label for="">Description</label>
                     <textarea name="description" class="form-control" id="" cols="30" rows="2">{{ old('description', $item->description) }}</textarea>
                 </div>

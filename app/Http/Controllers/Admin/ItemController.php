@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Item;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
+use App\Models\Category;
 
 class ItemController extends Controller
 {
@@ -23,7 +24,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('admin.items.create');
+        $categories = Category::orderBy('name')->get();
+        return view('admin.items.create', compact('categories'));
     }
 
     /**
@@ -50,7 +52,8 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        return view('admin.items.edit', compact('item'));
+        $categories = Category::orderBy('name')->get();
+        return view('admin.items.edit', compact('item', 'categories'));
     }
 
     /**

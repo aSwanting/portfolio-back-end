@@ -11,11 +11,12 @@
 
             <div class="card-header p-5">
                 <p class="text-end badge rounded-pill shadow bg-secondary p-2">N° {{ $item->id }}</p>
-                <h3 class="display-4 mb-0">{{ $item->name }}</h3>
+                <h3 class="display-4 mb-1">{{ $item->name }}</h3>
                 <p class="fst-italic">{{ $item->slug }}</p>
             </div>
 
             <div class="card-body p-5">
+                <p><span class="fw-bold">Category: </span>{{ $item->category->name }}</p>
                 <p class="fs-5">{{ $item->description }}</p>
             </div>
 

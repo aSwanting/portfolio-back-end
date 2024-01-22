@@ -7,6 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use App\Models\Category;
 
 class ItemSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class ItemSeeder extends Seeder
             $new_item->name = $faker->sentence(rand(2, 5));
             $new_item->slug = Str::slug($new_item->name);
             $new_item->description = $faker->text(250);
+            $new_item->category_id = Category::all()->random()->id;
             $new_item->save();
         }
     }

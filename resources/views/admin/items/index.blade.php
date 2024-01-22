@@ -17,6 +17,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Slug</th>
+                    <th>Category</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -27,6 +28,7 @@
                         <td>{{ $item->id }}</td>
                         <td><a href="{{ route('admin.items.show', $item) }}">{{ $item->name }}</a></td>
                         <td>{{ $item->slug }}</td>
+                        <td>{{ $item->category?->name }}</td>
                         <td><a class="btn btn-sm btn-outline-success" href="{{ route('admin.items.edit', $item) }}">edit</a>
                         </td>
                         <td>
