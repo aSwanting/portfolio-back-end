@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $items = Item::all();
+        $items = Item::orderBy('id', 'DESC')->get();
         return response()->json([
             'results' => $items,
             'success' => true
