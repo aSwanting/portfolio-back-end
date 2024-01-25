@@ -16,7 +16,7 @@
                     <select class="form-select" name="category_id" id="">
                         <option value="">Category</option>
                         @foreach ($categories as $category)
-                            <option @selected(old('category_id', $item->category->id) == $category->id) value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option @selected(old('category_id', $item->category?->id) == $category->id) value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
                 </div>

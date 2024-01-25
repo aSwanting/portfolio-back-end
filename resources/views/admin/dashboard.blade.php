@@ -30,10 +30,14 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td><a href="{{ route('admin.items.show', $item) }}">{{ $item->name }}</a></td>
-                                        <td><a
-                                                href="{{ route('admin.categories.show', $item->category) }}">{{ $item->category->name }}</a>
-                                        </td>
-                                        {{-- <td>{{ $item->category->name }}</td> --}}
+                                        @if ($item->category)
+                                            <td>
+                                                <a
+                                                    href="{{ route('admin.categories.show', $item->category) }}">{{ $item->category->name }}</a>
+                                            </td>
+                                        @else
+                                            <td>-</td>
+                                        @endif
                                     </tr>
                                 @empty
                                 @endforelse
